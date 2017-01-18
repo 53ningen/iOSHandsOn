@@ -7,16 +7,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        button.addTarget(self, action: #selector(ViewController.buttonOnTapped(sender:)), for: .touchUpInside)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func buttonOnTapped(sender: UIButton) {
+        let now = Date() // 現在時刻を取得
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP") // ロケールを指定
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss" // 時刻表示のフォーマットを指定
+        // 指定したフォーマットで現在時刻を取得してラベルに反映させる
+        label.text = dateFormatter.string(from: now)
     }
-
-
+    
 }
-
