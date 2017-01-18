@@ -6,16 +6,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var button: UIButton!
+    
     @IBOutlet weak var label: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        button.addTarget(self, action: #selector(ViewController.buttonOnTapped(sender:)), for: .touchUpInside)
-    }
-    
-    func buttonOnTapped(sender: UIButton) {
+    @IBAction func buttonOnTouchUpInside(_ sender: Any) {
         let now = Date() // 現在時刻を取得
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP") // ロケールを指定

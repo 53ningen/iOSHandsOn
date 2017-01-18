@@ -30,6 +30,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfT-cE-PiM">
                                 <rect key="frame" x="149" y="373.5" width="77" height="30"/>
                                 <state key="normal" title="時刻を表示"/>
+                                <connections>
+                                    <action selector="buttonOnTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qMC-EL-hHc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,7 +44,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="qfT-cE-PiM" id="ksb-MO-eEm"/>
                         <outlet property="label" destination="ODh-31-4Ia" id="xgL-pv-0Pn"/>
                     </connections>
                 </viewController>
