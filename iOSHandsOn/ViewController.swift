@@ -10,8 +10,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
     @IBAction func buttonOnTouchUpInside(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main)
-            .instantiateViewController(withIdentifier: "Main") as! ViewController
+        // Main.storyboard を取得
+        // Main.storyboard の InitialViewController は
+        // UINavigationController なので as! 以後はそれを指定
+        let nvc = UIStoryboard(name: "Main", bundle: Bundle.main)
+            .instantiateInitialViewController() as! UINavigationController
+        
+        // 遷移先としたいの ViewController は 
+        // childViewControllers の 1つ目の要素なので
+        let vc = nvc.childViewControllers[0] as! ViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
