@@ -15,4 +15,10 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    // 画面が表示された直後に呼ばれる
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NSLog("\(navigationController?.childViewControllers)")
+    }
+    
 }
