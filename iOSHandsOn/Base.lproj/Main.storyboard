@@ -35,6 +35,10 @@
                                 <rect key="frame" x="111" y="434" width="153" height="30"/>
                                 <state key="normal" title="プッシュ遷移から戻る"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0U-C3-gFn">
+                                <rect key="frame" x="126" y="494" width="123" height="30"/>
+                                <state key="normal" title="モーダル遷移する"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -42,13 +46,19 @@
                             <constraint firstItem="ODh-31-4Ia" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HCq-7R-QRz"/>
                             <constraint firstItem="ODh-31-4Ia" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IfK-kw-hGq"/>
                             <constraint firstItem="ogT-31-gzb" firstAttribute="top" secondItem="qfT-cE-PiM" secondAttribute="bottom" constant="30" id="SX7-GN-em9"/>
+                            <constraint firstItem="r0U-C3-gFn" firstAttribute="top" secondItem="ogT-31-gzb" secondAttribute="bottom" constant="30" id="VxX-Rk-Zwf"/>
                             <constraint firstItem="qfT-cE-PiM" firstAttribute="top" secondItem="ODh-31-4Ia" secondAttribute="bottom" constant="30" id="nz5-6x-2r6"/>
                             <constraint firstItem="qfT-cE-PiM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sQq-fK-vhk"/>
+                            <constraint firstItem="r0U-C3-gFn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zZD-7J-Ti5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kDd-mw-laU"/>
+                    <navigationItem key="navigationItem" id="kDd-mw-laU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="muy-fa-IL9"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="dismissButton" destination="muy-fa-IL9" id="DL6-JP-ie4"/>
                         <outlet property="label" destination="ODh-31-4Ia" id="xgL-pv-0Pn"/>
+                        <outlet property="modalButton" destination="r0U-C3-gFn" id="hRZ-CI-wLz"/>
                         <outlet property="popButton" destination="ogT-31-gzb" id="3jQ-Px-dtW"/>
                         <outlet property="pushButton" destination="qfT-cE-PiM" id="TZK-Gk-8xd"/>
                     </connections>
