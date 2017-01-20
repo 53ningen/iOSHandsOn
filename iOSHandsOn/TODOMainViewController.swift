@@ -16,6 +16,8 @@ class TODOMainViewController: UIViewController {
         dismissButton.target = self
         dismissButton.action = #selector(TODOMainViewController.dismissButtonTapped(_:))
         
+        let nib = UINib(nibName: "TODOMainViewTableCell", bundle: Bundle.main)
+        tableView.register(nib, forCellReuseIdentifier: "TODOMainViewTableCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -33,7 +35,12 @@ extension TODOMainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "TODOMainViewTableCell") as? TODOMainViewTableCell {
+            cell.taskLabelText = "row at: \(indexPath.item)"
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
 }
