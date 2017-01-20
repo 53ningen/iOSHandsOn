@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var popButton: UIButton!
     @IBOutlet weak var modalButton: UIButton!
     @IBOutlet weak var dismissButton: UIBarButtonItem!
+    @IBOutlet weak var todoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class ViewController: UIViewController {
         // UIBarButtonItem のイベント処理指定は UIButton と少し異なる
         dismissButton.target = self
         dismissButton.action = #selector(ViewController.dismissButtonTapped(_:))
+        
+        todoButton.addTarget(self, action: #selector(ViewController.todoButtonTapped(_:)), for: .touchUpInside)
     }
     
     // 画面が表示された直後に呼ばれる
@@ -58,6 +61,13 @@ class ViewController: UIViewController {
     
     func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func todoButtonTapped(_ sender: Any) {
+        // モーダル遷移
+        let nvc = UIStoryboard(name: "TODOMainViewController", bundle: Bundle.main)
+            .instantiateInitialViewController() as! UINavigationController
+        present(nvc, animated: true, completion: nil)
     }
     
 }

@@ -39,12 +39,18 @@
                                 <rect key="frame" x="126" y="494" width="123" height="30"/>
                                 <state key="normal" title="モーダル遷移する"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o2-Py-lfx">
+                                <rect key="frame" x="135" y="263" width="104" height="30"/>
+                                <state key="normal" title="TODO管理機能"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ODh-31-4Ia" firstAttribute="top" secondItem="3o2-Py-lfx" secondAttribute="bottom" constant="30" id="0wb-lG-EJf"/>
                             <constraint firstItem="ogT-31-gzb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="58g-kD-CKd"/>
                             <constraint firstItem="ODh-31-4Ia" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HCq-7R-QRz"/>
                             <constraint firstItem="ODh-31-4Ia" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IfK-kw-hGq"/>
+                            <constraint firstItem="3o2-Py-lfx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SBh-jR-dRM"/>
                             <constraint firstItem="ogT-31-gzb" firstAttribute="top" secondItem="qfT-cE-PiM" secondAttribute="bottom" constant="30" id="SX7-GN-em9"/>
                             <constraint firstItem="r0U-C3-gFn" firstAttribute="top" secondItem="ogT-31-gzb" secondAttribute="bottom" constant="30" id="VxX-Rk-Zwf"/>
                             <constraint firstItem="qfT-cE-PiM" firstAttribute="top" secondItem="ODh-31-4Ia" secondAttribute="bottom" constant="30" id="nz5-6x-2r6"/>
@@ -61,6 +67,7 @@
                         <outlet property="modalButton" destination="r0U-C3-gFn" id="hRZ-CI-wLz"/>
                         <outlet property="popButton" destination="ogT-31-gzb" id="3jQ-Px-dtW"/>
                         <outlet property="pushButton" destination="qfT-cE-PiM" id="TZK-Gk-8xd"/>
+                        <outlet property="todoButton" destination="3o2-Py-lfx" id="Vfg-o5-9OM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
