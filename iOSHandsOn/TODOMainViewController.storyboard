@@ -22,16 +22,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ffN-ix-b18">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-dn-btq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AIf-gV-9hv"/>
+                                    <barButtonItem style="plain" id="lXz-om-p5c">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input your task" textAlignment="natural" minimumFontSize="17" id="9Yu-pJ-4Wo">
+                                            <rect key="frame" x="112" y="7" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kEH-li-URM"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ffN-ix-b18" firstAttribute="top" secondItem="oUS-ud-5wf" secondAttribute="bottom" id="C9o-0V-88b"/>
+                            <constraint firstItem="ffN-ix-b18" firstAttribute="top" secondItem="tNW-dn-btq" secondAttribute="bottom" id="0X8-Fd-GfI"/>
+                            <constraint firstItem="Bfs-sC-TC9" firstAttribute="top" secondItem="ffN-ix-b18" secondAttribute="bottom" id="59c-yu-aWa"/>
+                            <constraint firstItem="tNW-dn-btq" firstAttribute="top" secondItem="oUS-ud-5wf" secondAttribute="bottom" id="Eja-Tg-zv4"/>
+                            <constraint firstAttribute="trailing" secondItem="tNW-dn-btq" secondAttribute="trailing" id="LwT-W7-dgS"/>
                             <constraint firstAttribute="trailing" secondItem="ffN-ix-b18" secondAttribute="trailing" id="Qna-zg-Fku"/>
-                            <constraint firstItem="Bfs-sC-TC9" firstAttribute="top" secondItem="ffN-ix-b18" secondAttribute="bottom" id="SDg-ep-XAQ"/>
                             <constraint firstItem="ffN-ix-b18" firstAttribute="leading" secondItem="QJv-CJ-5r4" secondAttribute="leading" id="oWy-tZ-ezW"/>
+                            <constraint firstItem="tNW-dn-btq" firstAttribute="leading" secondItem="QJv-CJ-5r4" secondAttribute="leading" id="otS-Ic-OG4"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -39,6 +58,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="FCP-Df-dv6"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTaskTextField" destination="9Yu-pJ-4Wo" id="e6e-x4-UBh"/>
                         <outlet property="dismissButton" destination="FCP-Df-dv6" id="ija-M7-tKl"/>
                         <outlet property="tableView" destination="ffN-ix-b18" id="z0d-bt-KXC"/>
                     </connections>

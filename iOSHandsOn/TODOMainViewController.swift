@@ -10,6 +10,9 @@ class TODOMainViewController: UIViewController {
     
     @IBOutlet weak var dismissButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addTaskTextField: UITextField!
+    
+    fileprivate var tasks: [String] = ["go to school", "go back home"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +23,31 @@ class TODOMainViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "TODOMainViewTableCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
+        addTaskTextField.delegate = self
     }
     
     func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        addTaskTextField.resignFirstResponder()
+    }
+    
+}
+
+extension TODOMainViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let task = textField.text, task != "" {
+            tasks.append(task)
+            textField.text = ""
+            tableView.reloadData()
+        }
+        return true
     }
     
 }
@@ -31,12 +55,12 @@ class TODOMainViewController: UIViewController {
 extension TODOMainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TODOMainViewTableCell") as? TODOMainViewTableCell {
-            cell.taskLabelText = "row at: \(indexPath.item)"
+            cell.taskLabelText = tasks[indexPath.item]
             return cell
         } else {
             return UITableViewCell()
@@ -64,8 +88,9 @@ extension TODOMainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let action = UITableViewRowAction(style: .destructive, title: "Delete") { _,_ in
-            NSLog("DeleteButton tapped: row at \(indexPath.item)")
+        let action = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] _,_ in
+            self?.tasks.remove(at: indexPath.item)
+            tableView.reloadData()
         }
         return [action]
     }
