@@ -12,6 +12,7 @@ class TODOMainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTaskTextField: UITextField!
     
+    private let refreshControl: UIRefreshControl = UIRefreshControl()
     fileprivate var tasks: [String] = ["go to school", "go back home"]
     
     override func viewDidLoad() {
@@ -19,16 +20,29 @@ class TODOMainViewController: UIViewController {
         dismissButton.target = self
         dismissButton.action = #selector(TODOMainViewController.dismissButtonTapped(_:))
         
+        refreshControl.addTarget(self, action: #selector(TODOMainViewController.onRefresh(_:)), for: .valueChanged)
+        
         let nib = UINib(nibName: "TODOMainViewTableCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "TODOMainViewTableCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.addSubview(refreshControl)
         
         addTaskTextField.delegate = self
     }
     
     func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func onRefresh(_ sender: Any) {
+        // refresh に2秒かかる処理と仮定した擬似コード
+        DispatchQueue.global().async {
+            sleep(2)
+            DispatchQueue.main.async { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
